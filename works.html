@@ -9,10 +9,12 @@ title: Works
 <ul class="item-list">
     <!-- _works フォルダ内のマークダウンファイルを自動で読み込みます -->
     {% for work in site.works %}
+    <!--
     <li>
         <a href="{{ work.url | relative_url }}">{{ work.title }}</a>
         <p>{{ work.description }}</p>
     </li>
+    -->
     {% endfor %}
 </ul>
 
