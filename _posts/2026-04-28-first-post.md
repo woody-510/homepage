@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GoogleのAIエディタ「Antigravity」を活用したサイト開設と今後の展望"
+title: "GoogleのAIエディタAntigravityを活用したサイト開設と今後の展望"
 ---
 
 <!-- 【ブログの本文を編集：以下に記事を書きます】 -->
