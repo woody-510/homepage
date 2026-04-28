@@ -14,3 +14,4 @@ collections:
   works:
     output: true
     permalink: /works/:name/
+timezone: Asia/Tokyo
