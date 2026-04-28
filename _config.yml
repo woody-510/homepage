@@ -1,0 +1,16 @@
+# サイトの基本設定
+title: "[SITE_TITLE]"
+description: "[SITE_DESCRIPTION]"
+# GitHub PagesのURL設定
+# 例: https://[USERNAME].github.io/[REPOSITORY_NAME] の場合
+# url: "https://[USERNAME].github.io"
+# baseurl: "/[REPOSITORY_NAME]"
+# もし https://[USERNAME].github.io の直下なら baseurl: "" のままでOKです。
+url: "https://woody-510.github.io"
+baseurl: "/homepage"
+
+# Works（作品）を個別ページとして出力するための設定
+collections:
+  works:
+    output: true
+    permalink: /works/:name/
