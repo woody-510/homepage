@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article>
+    <h1>{{ page.title }}</h1>
+    <p style="color: var(--text-light); margin-bottom: 2rem;">{{ page.date | date: "%Y.%m.%d" }}</p>
+
+    <div class="post-content">
+        <!-- ブログの本文がここに入ります -->
+        {{ content }}
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <a href="{{ '/blog.html' | relative_url }}">← Blog一覧に戻る</a>
+    </div>
+</article>
