@@ -147,13 +147,29 @@ p { margin-bottom: 1.5rem; }
 /* ==========================================================================
    Home Page
    ========================================================================== */
-.hero-image {
+.hero-slideshow {
+    position: relative;
     width: 100%;
     height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
     margin-bottom: 2rem;
-    background-color: var(--border-color); /* 画像がない場合のプレースホルダー */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--border-color);
+}
+
+.hero-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* 初期状態は透明 */
+    transition: opacity 1.5s ease-in-out; /* 1.5秒かけてフワッと切り替わる */
+}
+
+.hero-slideshow .slide.active {
+    opacity: 1; /* activeがついた画像だけ実体化する */
 }
 
 .update-history {
