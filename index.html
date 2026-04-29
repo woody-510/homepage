@@ -6,10 +6,10 @@ title: Home
 <!-- 【トップ画像を編集：srcのURLをお好きな画像のURLに変更してください。】 -->
 <!-- <img src="assets/image/atami.jpg" alt="トップ画像" class="hero-image"> -->
 <div class="hero-slideshow">
-    <img src="assets/image/atami.jpg" alt="Slide 1" class="slide active">
-    <img src="assets/image/doushimiti.jpg" alt="Slide 2" class="slide">
-    <img src="assets/image/enoshima1.jpg" alt="Slide 3" class="slide">
-    <img src="assets/image/otaru.jpg" alt="Slide 4" class="slide">
+    <img src="{{ '/assets/image/atami.jpg' | relative_url }}" alt="Slide 1" class="slide active">
+    <img src="{{ '/assets/image/doushimiti.jpg' | relative_url }}" alt="Slide 2" class="slide">
+    <img src="{{ '/assets/image/enoshima1.jpg' | relative_url }}" alt="Slide 3" class="slide">
+    <img src="{{ '/assets/image/otaru.jpg' | relative_url }}" alt="Slide 4" class="slide">
 </div>
 
 <script>
@@ -26,11 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
             currentSlide = (currentSlide + 1) % slides.length;
             // 次の画像を表示する
             slides[currentSlide].classList.add('active');
-        }, 4000); // 【編集】4000 = 4秒ごとに切り替わります。お好みで変更してください。
+        }, 4000);
     }
 });
 </script>
-
 <!-- 【挨拶文を編集：自分の紹介文に変更してください】 -->
 <h1>ようこそ</h1>
 <p>
