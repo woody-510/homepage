@@ -7,15 +7,20 @@ title: Community
 <p>コメントやご意見がある方はこちらへどうぞ。</p>
 
 <div style="margin-top: 3rem;">
-    <!-- 【Disqus追加用プレースホルダー】 -->
-    <!-- 
-      後日 Disqus (https://disqus.com/) などのコメントシステムを導入する場合は、
-      発行されたスクリプトタグを以下のdivタグの間に貼り付けてください。
-    -->
-    <div id="disqus_thread">
-        <!-- コメント欄がここに表示されます -->
-        <p style="text-align: center; color: var(--text-light); padding: 3rem; background: #fafafa; border: 1px dashed var(--border-color);">
-            [ コメントエリア (後日実施予定) ]
-        </p>
-    </div>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            // Jekyllの変数を使用して、このページ専用の識別子をDisqusに伝えます
+            this.page.url = "{{ page.url | absolute_url }}";  
+            this.page.identifier = "{{ page.id }}"; 
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            // すでにご主人様のショートネーム「woody-510」を設定済みです
+            s.src = 'https://woody-510.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>コメントを表示するにはJavaScriptを有効にしてください。</noscript>
 </div>
