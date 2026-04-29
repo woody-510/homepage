@@ -4,7 +4,31 @@ title: Home
 ---
 
 <!-- 【トップ画像を編集：srcのURLをお好きな画像のURLに変更してください。】 -->
-<img src="assets/image/atami.jpg" alt="トップ画像" class="hero-image">
+<!-- <img src="assets/image/atami.jpg" alt="トップ画像" class="hero-image"> -->
+<div class="hero-slideshow">
+    <img src="assets/image/atami.jpg" alt="Slide 1" class="slide active">
+    <img src="assets/image/doushimiti.jpg" alt="Slide 2" class="slide">
+    <img src="assets/image/enoshima1.jpg" alt="Slide 3" class="slide">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    let currentSlide = 0;
+    
+    // 画像が2枚以上ある場合のみタイマーを作動させる
+    if(slides.length > 1) {
+        setInterval(() => {
+            // 現在の画像を透明にする
+            slides[currentSlide].classList.remove('active');
+            // 次の画像の番号を計算（最後まで行ったら0に戻る）
+            currentSlide = (currentSlide + 1) % slides.length;
+            // 次の画像を表示する
+            slides[currentSlide].classList.add('active');
+        }, 4000); // 【編集】4000 = 4秒ごとに切り替わります。お好みで変更してください。
+    }
+});
+</script>
 
 <!-- 【挨拶文を編集：自分の紹介文に変更してください】 -->
 <h1>ようこそ</h1>
