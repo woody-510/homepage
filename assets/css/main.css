@@ -319,3 +319,9 @@ p { margin-bottom: 1.5rem; }
     color: var(--text-light);
     font-size: 0.9rem;
 }
+
+/* 記事内の画像が枠からはみ出さないようにする設定 */
+img {
+    max-width: 100%;
+    height: auto;
+}
