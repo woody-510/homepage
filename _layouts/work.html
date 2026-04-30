@@ -3,45 +3,69 @@ layout: default
 ---
 
 <article>
-    <h1>{{ page.title }}</h1>
-    
-    <div class="work-content">
-        <!-- Markdownの本文がここに入ります -->
-        {{ content }}
-    </div>
-    <!-- ブラウザで遊べる場合 -->
-    {% if page.play_url %}
-    <div class="play-section" style="margin: 2rem 0; padding: 1.5rem; background: #1a1a1a; color: #ffffff; border-radius: 8px; border-left: 5px solid #d32f2f;">
-        <h3 style="margin-top: 0; color: #d32f2f;">🎮 ゲームをプレイ</h3>
-        <p style="font-size: 0.9rem; color: #ccc;">
-            ※このゲームはブラウザで直接遊べます（PC専用）。<br>
-            ページを開くと音が出る場合がございますのでご注意ください。
-        </p>
-        <a href="{{ page.play_url }}" class="btn play-btn" target="_blank" rel="noopener noreferrer" style="background-color: #d32f2f; color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 10px;">
-            GAME START
-        </a>
-    </div>
-    {% endif %}
-    
-    <!-- YouTube埋め込みがある場合 -->
-    {% if page.youtube_id %}
-    <div class="video-container">
-        <!-- 【YouTubeのIDから自動的に埋め込みフレームを作成します】 -->
-        <iframe src="https://www.youtube.com/embed/{{ page.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    {% endif %}
+    <h1>{{ page.title }}</h1>
+    
+    <div class="work-content">
+        <!-- Markdownの本文がここに入ります -->
+        {{ content }}
+    </div>
 
-    <!-- ダウンロードリンクがある場合 -->
-    {% if page.download_url %}
-    <div class="download-section">
-        <h3>この作品をダウンロード</h3>
-        <p>以下のボタンからGoogle Drive等経由でファイルをダウンロードできます。</p>
-        <br>
-        <a href="{{ page.download_url }}" class="btn download-btn" target="_blank" rel="noopener noreferrer">Download File</a>
-    </div>
-    {% endif %}
+    <!-- ↓ここから追加：音楽が設定されている場合のみ自動生成するプログラム↓ -->
+    {% if page.audio_url %}
+    <div style="background-color: #fafafa; padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 2rem;">
+        <h3 style="margin-top: 0;">試聴用プレイヤー</h3>
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+            以下のプレイヤーから楽曲を試聴できます。
+        </p>
+        
+        <audio controls style="width: 100%; margin: 20px 0; outline: none;">
+            <source src="{{ page.audio_url | relative_url }}" type="audio/mpeg">
+        </audio>
 
-    <div style="margin-top: 3rem;">
-        <a href="{{ '/works.html' | relative_url }}">← Works一覧に戻る</a>
-    </div>
+        <div style="text-align: center; margin-bottom: 10px;">
+            <a href="{{ page.audio_url | relative_url }}" download class="music-download-btn">
+                楽曲をダウンロード
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <!-- ↑追加ここまで↑ -->
+
+    <!-- ブラウザで遊べる場合 -->
+    {% if page.play_url %}
+    <div class="play-section" style="margin: 2rem 0; padding: 1.5rem; background: #1a1a1a; color: #ffffff; border-radius: 8px; border-left: 5px solid #d32f2f;">
+        <h3 style="margin-top: 0; color: #d32f2f;">🎮 ゲームをプレイ</h3>
+        <p style="font-size: 0.9rem; color: #ccc;">
+            ※このゲームはブラウザで直接遊べます（PC専用）。<br>
+            ページを開くと音が出る場合がございますのでご注意ください。
+        </p>
+        <a href="{{ page.play_url }}" class="btn play-btn" target="_blank" rel="noopener noreferrer" style="background-color: #d32f2f; color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 10px;">
+            GAME START
+        </a>
+    </div>
+    {% endif %}
+    
+    <!-- YouTube埋め込みがある場合 -->
+    {% if page.youtube_id %}
+    <div class="video-container">
+        <!-- 【YouTubeのIDから自動的に埋め込みフレームを作成します】 -->
+        <iframe src="https://www.youtube.com/embed/{{ page.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    {% endif %}
+
+    <!-- ダウンロードリンクがある場合 -->
+    {% if page.download_url %}
+    <div class="download-section">
+        <h3>この作品をダウンロード</h3>
+        <p>以下のボタンからGoogle Drive等経由でファイルをダウンロードできます。</p>
+        <br>
+        <a href="{{ page.download_url }}" class="btn download-btn" target="_blank" rel="noopener noreferrer">Download File</a>
+    </div>
+    {% endif %}
+
+        
+
+    <div style="margin-top: 3rem;">
+        <a href="{{ '/works.html' | relative_url }}">← Works一覧に戻る</a>
+    </div>
 </article>
