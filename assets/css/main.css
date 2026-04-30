@@ -325,3 +325,30 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* ==========================================================================
+   Music Player & Download Button (Works Page)
+   ========================================================================== */
+.music-download-btn {
+    display: inline-block;
+    background-color: transparent; /* 背景は透明に */
+    color: var(--primary-color) !important; /* 文字は黒 */
+    padding: 12px 28px;
+    border-radius: 50px; /* 角を丸くして柔らかい印象に */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    border: 2px solid var(--primary-color); /* 黒い枠線 */
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-top: 15px;
+}
+
+/* マウスを乗せた時のアクション */
+.music-download-btn:hover {
+    background-color: var(--primary-color); /* 背景を黒に反転 */
+    color: var(--bg-color) !important; /* 文字を白に反転 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* 少しだけ上に浮き上がる */
+}
