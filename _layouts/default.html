@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
+    
+    <!-- ▼ OGPタグの設定（ここから追加） ▼ -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 120 }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <!-- OGP用の画像（必要に応じて /assets/image/ogp.jpg などを作成して変更してくれ） -->
+    <meta property="og:image" content="{{ '/assets/image/atami.jpg' | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- ▲ OGPタグの設定（ここまで） ▲ -->
+
     <!-- サイトのファビコン（絵文字をアイコンとして使用） -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>✨</text></svg>">
     <!-- Font Awesome (SNSアイコンなどに使用) -->
@@ -19,5 +31,29 @@
     </main>
 
     {% include footer.html %}
+
+    <!-- ▼ トップへ戻るボタンのHTMLとJS（ここから追加） ▼ -->
+    <button id="backToTopBtn" title="トップへ戻る"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        // スクロール量に応じてボタンの表示・非表示を切り替える
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // クリックされたら一番上へ滑らかに戻る
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+    </script>
+    <!-- ▲ トップへ戻るボタンのHTMLとJS（ここまで） ▲ -->
 </body>
 </html>
