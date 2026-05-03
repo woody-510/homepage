@@ -2,7 +2,7 @@
 layout: work
 title: "ピンクノイズミキシングの成果物"
 description: "ピンクノイズミキシングに挑戦しました。フルサイズの楽曲です。"
-audio_url: "../assets/audio/test_song.mp3" 
+audio_url: "/assets/audio/test_song.mp3" 
 ---
 
 ### 構成
