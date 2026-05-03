@@ -1,6 +1,6 @@
 ---
 layout: work
-title: "[WORK_TITLE] (作品タイトル)"
+title: "ピンクノイズミキシングの成果物"
 description: "ピンクノイズミキシングに挑戦しました。フルサイズの楽曲です。"
 audio_url: "/homepage/assets/audio/test_song.mp3" 
 ---
