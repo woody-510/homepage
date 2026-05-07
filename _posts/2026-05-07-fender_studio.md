@@ -14,34 +14,34 @@ excerpt: "初めてFender Studio Proを使った感想と機能解説。"
 ## インターフェースの第一印象と機能の集約
 
 まず、起動して目に飛び込んできた作曲画面ですが、Studio One 7の伝統的なレイアウトを厳格に継承しておりました。
-![作曲画面]({{ "/assets/images/fender_top.png" | relative_url }})
+![作曲画面]({{ "/assets/images/fender_top.jpg" | relative_url }})
 わずかな変更は見受けられるものの、操作体系はほぼ変わらず。続いて標準サンプラーである「Presence」を起動いたしましたが、こちらもUIの洗練を除けば、操作感は従来のままでございました。
-![presence]({{ "/assets/images/fender_presence.png" | relative_url }})
+![presence]({{ "/assets/images/fender_presence.jpg" | relative_url }})
 注目すべきは、ブラウザ内の整理手法です。これまでStudio Oneの付属音源として親しまれてきたものは、インスツルメント内の「Fender」という名称のフォルダに一括して格納されております。
-![フォルダ]({{ "/assets/images/fender_plugin.png" | relative_url }})
+![フォルダ]({{ "/assets/images/fender_plugin.jpg" | relative_url }})
 presonus製のシンセサイザーはそのままpresonusのフォルダにあるので検索する際に一瞬の戸惑いが生じる可能性はございますが、慣れの問題でしょう。
 
 ## Mustang Native
 私自身、ギターを主軸に据えた制作を行っておりますため、新搭載のアンプシミュレーター「Mustang Native」には強い期待を抱いておりました。
-![アンシミュ]({{ "/assets/images/fender_Mustang Native.png" | relative_url }})
+![アンシミュ]({{ "/assets/images/fender_Mustang Native.jpg" | relative_url }})
 実際に起動してみますと、そのUIは極めて簡潔かつ洗練されており、非常に扱いやすい印象です。多彩なペダル群と豊富なプリセットが網羅されており、つまみの挙動も直感的で実用性に長けております。
 
 以前の私のように、「AmpliTube 5」などの外部ソフトでFender系のエフェクトを使用する場合、基本セットとは別に、製品ごとの追加課金が必要となるケースが大半でした。しかし本ソフトでは、それら高品位なエフェクトが標準で提供されております。この「追加投資の不要さ」は、制作者にとって極めて大きな福音と言わざるを得ません。
 
 ## エフェクト管理の効率化
 インターフェース面での大きな変化として、フェーダーの管理手法が挙げられます。以前は画面下部に多くのフェーダーが常時並んでおりましたが、本作からはトラック名をクリックすることで、そのトラック専用のフェーダーやインサートエフェクトが即座に表示される仕様となりました。
-![エフェクト]({{ "/assets/images/fender_sita.png" | relative_url }})
+![エフェクト]({{ "/assets/images/fender_sita.jpg" | relative_url }})
 かかっているエフェクトを単一のビューで一括管理できるこの仕組みは、視認性を飛躍的に高めております。一方で、プロジェクト全体のバランスを俯瞰する際には、従来のコンソール表示への切り替えを意識的に行う必要があるという側面もございますが、慣れれば圧倒的にこちらの方式が作業スピードにおいて優位であると確信いたしました。
 
 ## 高度な解析機能
 さらに、今回の進化はインターフェースに留まりません。AI技術を活用した解析機能が、制作のあり方を根本から変える可能性を秘めております。
  - コード検出機能
- ![コード解析１]({{ "/assets/images/fender_code1.png" | relative_url }})
- ![コード解析２]({{ "/assets/images/fender_code2.png" | relative_url }})
+ ![コード解析１]({{ "/assets/images/fender_code1.jpg" | relative_url }})
+ ![コード解析２]({{ "/assets/images/fender_code2.jpg" | relative_url }})
  オーディオイベントから瞬時にコード進行を解析し、可視化する機能です。耳コピの効率化はもちろん、既存のループ素材から音楽的な構造を把握する上で、これほど強力な武器はございません。
  - ステム分離機能
- ![ステム分離１]({{ "/assets/images/fender_sepa1.png" | relative_url }})
- ![ステム分離２]({{ "/assets/images/fender_sepa2.png" | relative_url }})
+ ![ステム分離１]({{ "/assets/images/fender_sepa1.jpg" | relative_url }})
+ ![ステム分離２]({{ "/assets/images/fender_sepa2.jpg" | relative_url }})
  一つのオーディオファイルから「ボーカル」「ドラム」「ベース」「その他」を分離する精度は、実用レベルに達しております。リミックス制作や、楽器練習用のバッキングトラック作成において、計り知れない価値を発揮するでしょう。
 
 ただし、これらのAI機能はPCのリソースを相応に消費するため、低スペックの環境下では動作の重さを招く副作用が懸念されます。その場合は、解析時のみバッファサイズを調整するなどの対策が有効です。
