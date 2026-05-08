@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Studio Oneが進化したFender Studio Proを使ってみる。"
+title: "Studio Oneが進化したFender Studio Proを使ってみる"
 excerpt: "初めてFender Studio Proを使った感想と機能解説。"
 ---
 
