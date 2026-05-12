@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレミアム・スロットマシン</title>
+    <style>
+        :root {
+            --primary: #ff4757;
+            --primary-hover: #ff6b81;
+            --secondary: #2ed573;
+            --bg-color: #1e1e2f;
+            --panel-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #f1f2f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2f3542 0%, #1e1e2f 100%);
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            color: var(--text-color);
+        }
+
+        .game-wrapper {
+            background: var(--panel-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ffffff, #a4b0be);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .coins {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffa502;
+            text-shadow: 0 0 15px rgba(255, 165, 2, 0.4);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 165, 2, 0.3);
+        }
+
+        .reels-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .reel {
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 -5px 10px rgba(0,0,0,0.1);
+            border: 4px solid #dfe4ea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 30%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+            border-radius: 12px 12px 0 0;
+            pointer-events: none;
+        }
+
+        .reel img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .message {
+            font-size: 22px;
+            font-weight: bold;
+            height: 30px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            transition: color 0.3s;
+        }
+
+        .spin-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            font-size: 26px;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3), inset 0 -3px 0 rgba(0,0,0,0.2);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .spin-btn:hover:not(:disabled) {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(255, 71, 87, 0.4), inset 0 -3px 0 rgba(0,0,0,0.2);
+        }
+
+        .spin-btn:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: 0 5px 10px rgba(255, 71, 87, 0.3), inset 0 -1px 0 rgba(0,0,0,0.2);
+        }
+
+        .spin-btn:disabled {
+            background: #57606f;
+            color: #a4b0be;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .win-anim {
+            animation: winPulse 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2;
+        }
+
+        @keyframes winPulse {
+            0% { transform: scale(1); }
+            50% { 
+                transform: scale(1.15); 
+                border-color: var(--secondary);
+                box-shadow: 0 0 30px rgba(46, 213, 115, 0.6);
+            }
+            100% { transform: scale(1); }
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 500px) {
+            .game-wrapper { padding: 20px; }
+            .reels-container { gap: 10px; padding: 20px 10px; }
+            .reel { width: 90px; height: 90px; border-width: 3px; }
+            .spin-btn { padding: 15px 40px; font-size: 20px; }
+            .coins { font-size: 20px; }
+            h1 { font-size: 18px; }
+            .message { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-wrapper">
+        <div class="header">
+            <h1>SLOT MACHINE</h1>
+            <div class="coins" id="coins">🪙 100</div>
+        </div>
+
+        <div class="reels-container">
+            <div class="reel" id="reel1"><img src="gazo1.png" alt="slot image"></div>
+            <div class="reel" id="reel2"><img src="gazo1.png" alt="slot image"></div>
+            <div class="reel" id="reel3"><img src="gazo1.png" alt="slot image"></div>
+        </div>
+
+        <div class="message" id="message">スピンボタンを押してね！</div>
+
+        <button class="spin-btn" id="spin-btn">SPIN</button>
+    </div>
+
+    <script>
+        const images = [
+            'gazo1.png', 'gazo2.png', 'gazo3.png', 
+            'gazo4.png', 'gazo5.png', 'gazo6.png'
+        ];
+        
+        let coins = 100;
+        const bet = 10;
+        let isSpinning = false;
+
+        const coinsEl = document.getElementById('coins');
+        const messageEl = document.getElementById('message');
+        const btn = document.getElementById('spin-btn');
+        const reels = [
+            document.getElementById('reel1'),
+            document.getElementById('reel2'),
+            document.getElementById('reel3')
+        ];
+
+        function updateCoins() {
+            coinsEl.textContent = `🪙 ${coins}`;
+        }
+
+        btn.addEventListener('click', () => {
+            if (isSpinning) return;
+            if (coins < bet) {
+                messageEl.textContent = 'コインが足りません！';
+                messageEl.style.color = '#ff4757';
+                return;
+            }
+
+            // 状態の更新
+            coins -= bet;
+            updateCoins();
+            isSpinning = true;
+            btn.disabled = true;
+            messageEl.textContent = 'スピン中...';
+            messageEl.style.color = '#f1f2f6';
+
+            // アニメーションクラスをリセット
+            reels.forEach(r => r.classList.remove('win-anim'));
+
+            // 回転アニメーション
+            let spins = 0;
+            const maxSpins = 20; // 50ms * 20 = 1秒
+            
+            // 少しずつ遅くする演出のための変数
+            let currentInterval = 50;
+
+            const spinInterval = setInterval(() => {
+                reels.forEach(r => {
+                    const randomImg = images[Math.floor(Math.random() * images.length)];
+                    r.querySelector('img').src = randomImg;
+                });
+                spins++;
+
+                if (spins >= maxSpins) {
+                    clearInterval(spinInterval);
+                    checkWin();
+                }
+            }, currentInterval);
+        });
+
+        function checkWin() {
+            // 最終出目を決定
+            const r1 = Math.floor(Math.random() * images.length);
+            const r2 = Math.floor(Math.random() * images.length);
+            const r3 = Math.floor(Math.random() * images.length);
+
+            reels[0].querySelector('img').src = images[r1];
+            reels[1].querySelector('img').src = images[r2];
+            reels[2].querySelector('img').src = images[r3];
+
+            setTimeout(() => {
+                // 判定
+                if (r1 === r2 && r2 === r3) {
+                    let prize = (r1 === 0) ? 150 : 50;
+                    coins += prize;
+                    messageEl.innerHTML = `🎉 大当たり！ ${prize}枚ゲット！ 🎉`;
+                    messageEl.style.color = '#2ed573'; // 緑色
+                    reels.forEach(r => r.classList.add('win-anim')); // ピカッと光るアニメーション
+                } else if (r1 === r2 || r2 === r3 || r1 === r3) {
+                    coins += 10;
+                    messageEl.textContent = '小当たり！ 10枚ゲット！';
+                    messageEl.style.color = '#ffa502'; // オレンジ色
+                } else {
+                    messageEl.textContent = 'ハズレ...';
+                }
+
+                updateCoins();
+                isSpinning = false;
+                
+                if (coins < bet) {
+                    messageEl.textContent = 'ゲームオーバー！';
+                    messageEl.style.color = '#ff4757';
+                } else {
+                    btn.disabled = false;
+                }
+            }, 100); // 最後の画像が表示されてから少し待って判定結果を出す
+        }
+
+        // 初期化処理（必要に応じて）
+        window.onload = () => {
+            // 最初は適当な画像や gazo1 を表示しておく
+            reels.forEach(r => {
+                r.querySelector('img').src = images[0];
+            });
+        };
+    </script>
+</body>
+</html>
